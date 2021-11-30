@@ -20,7 +20,7 @@ async def start(bot, update):
                               "**NOW:-** "
                                        
                                        "Press **/login** to continue..\n\n"
-                                     "Bot made by **@MR_ALPHA_SIR1 & MR Pro**" )
+                                     "Bot made by **@MR_ALPHA_SIR1 & KiD**" )
 
 url="https://elearn.crwilladmin.com/api/v1/"
 
@@ -53,9 +53,9 @@ async def account_login(bot: Client, m: Message):
     url1 = requests.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token="+token)
     b_data = url1.json()['data']['batchData']
     for data in b_data:
-        aa=f"**{data['id']}  :  {data['batchName']}\n**"
+        aa=f"```{data['id']}```  :  **{data['batchName']}\n**"
         await m.reply_text(aa)
-    editable1= await m.reply_text("Now send the Batch ID to Download PDFs")
+    editable1= await m.reply_text("**Now send the Batch ID to Download PDFs**")
     input2 = message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
     
@@ -63,11 +63,14 @@ async def account_login(bot: Client, m: Message):
 
     url2=requests.get("https://elearn.crwilladmin.com/api/v1/comp/batch-notes/"+raw_text2+"?topicid="+raw_text2+"&token="+token)
     k=url2.json()["data"]["notesDetails"]
+    bb = len(url2.json()["data"]["notesDetails"])
+    ss = f"Total PDFs Found in Batch id **{raw_text2}** is - **{bb}** "
+    await editable1.edit (ss)
+    k.reverse()
     for data in k:
         name=(data["docTitle"])
         s=str(data["docUrl"]) 
-        await m.reply_text(name+"\n"+s)
+        ww = f"**Document name :- {name}**\n\n**Pdf url:-** {s}"
+        await m.reply_text(ww)
         
-    
-
 bot.run()
