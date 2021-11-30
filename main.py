@@ -1,4 +1,5 @@
 import json
+import tgcrypto
 from pyromod import listen
 from pyrogram.types import Message
 import pyrogram
