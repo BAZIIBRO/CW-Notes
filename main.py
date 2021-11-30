@@ -70,7 +70,7 @@ async def account_login(bot: Client, m: Message):
     for data in k:
         name=(data["docTitle"])
         s=str(data["docUrl"]) 
-        ww = f"**Document name :- {name}**\n\n**Pdf url:-** {s}"
+        ww = f"**Document name :- {name}**\n\n**PDF Url :- **{s}"
         await m.reply_text(ww)
         
 bot.run()
