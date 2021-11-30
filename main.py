@@ -70,8 +70,16 @@ async def account_login(bot: Client, m: Message):
     for data in k:
         name=(data["docTitle"])
         s=str(data["docUrl"]) 
-        ka = s.split("/")[-1]
         ka = await download(s)
         await m.reply_document(ka, caption=s)
         
+async def download(url):
+    ka = url.split("/")[-1]
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            if resp.status == 200:
+                f = await aiofiles.open(ka, mode='wb')
+                await f.write(await resp.read())
+                await f.close()
+    return ka
 bot.run()
