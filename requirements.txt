@@ -2,5 +2,5 @@ pyrogram
 tgcrypto
 requests
 pyromod
-aria2p==0.9.1
+
 
