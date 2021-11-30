@@ -20,7 +20,7 @@ async def start(bot, update):
                               "**NOW:-** "
                                        
                                        "Press **/login** to continue..\n\n"
-                                     "Bot made by **Unknown**" )
+                                     "Bot made by **Unknown ~ Kai84**" )
 
 url="https://elearn.crwilladmin.com/api/v1/"
 
@@ -70,7 +70,8 @@ async def account_login(bot: Client, m: Message):
     for data in k:
         name=(data["docTitle"])
         s=str(data["docUrl"]) 
-        ww = f"**Document name :- {name}**\n\n**PDF Url :- **{s}"
-        await m.reply_text(ww)
+        ka = s.split("/")[-1]
+        ka = await download(s)
+        await m.reply_document(ka, caption=s)
         
 bot.run()
