@@ -20,7 +20,7 @@ async def start(bot, update):
                               "**NOW:-** "
                                        
                                        "Press **/login** to continue..\n\n"
-                                     "Bot made by **@MR_ALPHA_SIR1 & Unknown**" )
+                                     "Bot made by **Unknown**" )
 
 url="https://elearn.crwilladmin.com/api/v1/"
 
