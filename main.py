@@ -1,3 +1,6 @@
+import aiohttp
+import asyncio
+import aiofiles
 import json
 import tgcrypto
 from pyromod import listen
@@ -72,6 +75,7 @@ async def account_login(bot: Client, m: Message):
         s=str(data["docUrl"]) 
         ka = await download(s)
         await m.reply_document(ka, caption=s)
+        os.remove(ka)
         
 async def download(url):
     ka = url.split("/")[-1]
